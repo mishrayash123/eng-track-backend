@@ -1,20 +1,22 @@
 import express from 'express';
 
-import { createCart ,getcart,deleteCartById} from '../db/Cart.js';
-
-export const addtocart = async (req, res) => {
+import { createPosts ,getPosts,deletePostsById} from '../db/posts.js';
+export const addtoposts = async (req, res) => {
     try {
-      const { productid, userid,image,title,price } = req.body;
-      if (!productid || !userid) {
+      const {content, userid,image,link,date,profileimage,profilename,profilesub} = req.body;
+      if (!userid) {
         return res.sendStatus(400);
       }
 
-      const user  = await createCart({
-        productid,
+      const user  = await createPosts({
+        content,
         userid,
         image,
-        title,
-        price
+        link,
+        date,
+        profileimage,
+        profilename,
+        profilesub
       });
       return res.status(200).json(user).end();
     } catch (error) {
@@ -23,9 +25,9 @@ export const addtocart = async (req, res) => {
     }
   }
 
-  export  const getCart = async (req, res) => {
+  export  const getposts1 = async (req, res) => {
     try {
-      const users  = await getcart();
+      const users  = await getPosts();
   
       return res.status(200).json(users);
     } catch (error) {
@@ -34,11 +36,11 @@ export const addtocart = async (req, res) => {
     }
   };
 
-  export  const deleteCart = async (req, res) => {
+  export  const deletepost = async (req, res) => {
     try {
       const { id } = req.params;
   
-      const deletedUser = await deleteCartById(id);
+      const deletedUser = await deletePostsById(id);
   
       return res.json(deletedUser);
     } catch (error) {
