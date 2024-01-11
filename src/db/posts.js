@@ -1,3 +1,4 @@
+import { Timestamp } from 'mongodb';
 import mongoose from 'mongoose';
 
 // User Config
@@ -10,6 +11,7 @@ const UserSchema = new mongoose.Schema({
   userid: { type: String, required: true },
   profilename: { type: String, required: true },
   profilesub: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
 });
 
 
