@@ -32,7 +32,7 @@ server.listen(8080, () => {
 
 
 mongoose.Promise = Promise;
-mongoose.connect("mongodb+srv://Yash7861:Yash7861234@cluster0.6eoka05.mongodb.net/").then(() => {
+mongoose.connect(DB).then(() => {
   console.log('connected successfully');
 }).catch(() => console.log('not connected'));
 // mongoose.connection.on('error', (error: Error) => console.log(error));
