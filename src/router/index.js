@@ -3,7 +3,7 @@ import express from 'express';
 import authentication from './authentication.js';
 import users from './users.js';
 import posts  from './posts.js';
-import orders from './orders.js'
+import review from './review.js'
 import sellers from './Seller.js'
 import products from './products.js';
 
@@ -14,7 +14,7 @@ export default () => {
   users(router);
   posts(router);
   sellers(router);
-  orders(router);
+  review(router);
   products(router)
   return router;
 };
